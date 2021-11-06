@@ -4,7 +4,7 @@ from logging import LogRecord
 from flask import request, has_request_context
 from pythonjsonlogger import jsonlogger
 
-from . import config
+import config
 
 
 class CustomJsonFormatter(jsonlogger.JsonFormatter):
@@ -23,14 +23,14 @@ json_formatter = CustomJsonFormatter()
 handler = logging.StreamHandler()
 handler.setFormatter(json_formatter)
 
-logger = logging.getLogger()
-logger.addHandler(handler)
+app_logger = logging.getLogger()
+app_logger.addHandler(handler)
 
 wrkzg_logger = logging.getLogger("werkzeug")
 
 if config.DEBUG:
-    logger.setLevel(logging.DEBUG)
+    app_logger.setLevel(logging.DEBUG)
     wrkzg_logger.setLevel(logging.DEBUG)
 else:
-    logger.setLevel(logging.WARNING)
+    app_logger.setLevel(logging.WARNING)
     wrkzg_logger.setLevel(logging.WARNING)

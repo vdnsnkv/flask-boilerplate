@@ -1,6 +1,6 @@
 from flask import Flask
 
-from .log import logger
+from logger import app_logger
 
 
 def create_app(conf: dict = None) -> Flask:
@@ -9,7 +9,7 @@ def create_app(conf: dict = None) -> Flask:
     if conf:
         app.config.update(conf)
 
-    app.logger = logger
+    app.logger = app_logger
 
     @app.route('/')
     def index():
