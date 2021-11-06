@@ -11,11 +11,6 @@ def create_app(conf: dict = None) -> Flask:
 
     app.logger = logger
 
-    # if ENV == PRODUCTION:
-    #     app.logger.setLevel(logging.WARNING)
-    # else:
-    #     app.logger.setLevel(logging.DEBUG)
-
     @app.route('/')
     def index():
         return ''
