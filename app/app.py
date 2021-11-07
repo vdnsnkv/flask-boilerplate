@@ -10,7 +10,7 @@ def configure_handlers(app: Flask) -> None:
 
 
 def create_app(conf: dict = None) -> Flask:
-    app = Flask(__name__)
+    app = Flask('flask-primer')
 
     if conf:
         app.config.update(conf)
